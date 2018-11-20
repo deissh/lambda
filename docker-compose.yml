@@ -1,0 +1,12 @@
+version: '2.1'
+
+services:
+  runner:
+    image: jinesa/runner
+    build: .
+    network_mode: "host"
+    environment:
+      DEFAULT_PATH: ./temp
+      HANDLER_UUID: 123ws2x1
+    ports:
+      - 3000:3000
