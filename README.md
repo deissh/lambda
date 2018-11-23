@@ -81,3 +81,51 @@ functions:
     events:
       - http
 ```
+
+When you have done, you need to restart Docker-Compose or locally project.
+
+```bash
+$ docker-compose restart
+```
+
+#### Trigger you function
+
+Your function can be triggered by HTTP request, for example, you can use cURL or others HTTP clients.
+
+```bash
+$ curl http://127.0.0.1:3000/v1/{functionuuid}/{handlername}
+```
+
+for example
+
+```bash
+$ curl http://127.0.0.1:3000/v1/123ws2x1/hello
+
+{
+  "foo": "bar",
+  "event": {
+    "path": "/123ws2x1/hello",
+    "headers": {
+      "host": "127.0.0.1:3000",
+      "connection": "keep-alive",
+      "cache-control": "max-age=0",
+      "upgrade-insecure-requests": "1",
+     },
+    "httpMethod": "GET",
+    "pathParameters": {
+      
+    },
+    "body": {
+      
+    }
+  },
+  "context": {
+    "awsRequestId": "6654c38a-5e1e-6031-59f8-c41ffb8f65dc",
+    "logStreamName": "2018/11/23/[$LATEST]6654c38a5e1e603159f8c41ffb8f65dc",
+    "memoryLimitInMB": "128",
+    "functionVersion": "$LATEST",
+    "functionUUID": "123ws2x1",
+    "invokedFunctionArn": "arn:aws:lambda:aws-region:1234567890123:function:123ws2x1"
+  }
+}
+```
