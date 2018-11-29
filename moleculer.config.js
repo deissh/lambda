@@ -71,7 +71,7 @@ module.exports = {
 
 	// Called after broker created.
 	created(broker) {
-		
+
 	},
 
 	// Called after broker starte.

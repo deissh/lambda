@@ -23,6 +23,15 @@ module.exports = {
 			handler(ctx) {
 				return `Welcome, ${ctx.params.name}`;
 			}
+		},
+
+		run: {
+			params: {
+				uuid: "string"
+			},
+			handler(ctx) {
+				return "reuslt";
+			}
 		}
 	},
 	events: {
