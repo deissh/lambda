@@ -1,10 +1,14 @@
-FROM node:10-alpine
-ENV NODE_ENV production
-MAINTAINER FunctionRunner deissh@yandex.ru
+FROM node:8-alpine
 
-WORKDIR /usr/src/app
-ADD package.json package.json
-# RUN npm install pino-elasticsearch -g
+ENV NODE_ENV=production
+
+RUN mkdir /app
+WORKDIR /app
+
+COPY package.json .
+
 RUN npm install --production
-ADD . .
+
+COPY . .
+
 CMD ["npm", "start"]
