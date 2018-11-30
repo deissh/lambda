@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "My Moleculer microservices project",
   "scripts": {
-    "dev": "moleculer-runner --repl --hot services",
+    "dev": "moleculer-runner --repl --hot --config moleculer.dev.config.js services",
     "start": "moleculer-runner",
     "ci": "jest --watch",
     "test": "jest --coverage",
@@ -21,8 +21,10 @@
     "moleculer-repl": "^0.5.0"
   },
   "dependencies": {
+    "@slynova/flydrive": "^0.3.1",
     "moleculer": "^0.13.0",
     "moleculer-db": "^0.7.6",
+    "moleculer-flydrive": "^0.1.1",
     "moleculer-web": "^0.8.0",
     "nats": "^1.0.0"
   },

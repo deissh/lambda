@@ -6,11 +6,11 @@ module.exports = {
 	nodeID: null,
 
 	logger: true,
-	logLevel: "info",
+	logLevel: "debug",
 	logFormatter: "default",
 	logObjectPrinter: null,
 
-	transporter: "NATS",
+	transporter: null,
 
 	serializer: "JSON",
 

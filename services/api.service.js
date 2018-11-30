@@ -3,24 +3,24 @@
 const ApiGateway = require("moleculer-web");
 
 module.exports = {
-	name: "api",
-	mixins: [ApiGateway],
+  name: "api",
+  mixins: [ApiGateway],
 
-	// More info about settings: https://moleculer.services/docs/0.13/moleculer-web.html
-	settings: {
-		port: process.env.PORT || 3000,
+  // More info about settings: https://moleculer.services/docs/0.13/moleculer-web.html
+  settings: {
+    port: process.env.PORT || 3000,
 
-		routes: [{
-			path: "/api",
-			whitelist: [
-				// Access to any actions in all services under "/api" URL
-				"lambda/*"
-			]
-		}],
+    routes: [{
+      path: "/api",
+      whitelist: [
+        // allow only lambda/** requests
+        "**"
+      ]
+    }],
 
-		// Serve assets from "public" folder
-		assets: {
-			folder: "public"
-		}
-	}
+    // Serve assets from "public" folder
+    assets: {
+      folder: "public"
+    }
+  }
 };

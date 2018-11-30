@@ -13,11 +13,6 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
-        "indent": [
-            "warn",
-            "tab",
-            { "SwitchCase": 1 }
-        ],
         "quotes": [
             "warn",
             "double"

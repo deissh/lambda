@@ -1,50 +1,52 @@
 "use strict";
 
 const service = {
-	name: "lambda",
-	settings: {
+  name: "lambda",
+  settings: {
 
-	},
-	dependencies: [],	
-	actions: {
-		/**
-		 * Welcome a username
-		 *
-		 * @param {String} name - User name
-		 */
-		welcome: {
-			params: {
-				name: "string"
-			},
-			handler(ctx) {
-				return `Welcome, ${ctx.params.name}`;
-			}
-		},
+  },
+  dependencies: [
+    "lambda-store"
+    // "lambda-drive"
+  ],
+  actions: {
+    /**
+     * Welcome a username
+     *
+     * @param {String} name - User name
+     */
+    welcome: {
+      params: {
+        name: "string"
+      },
+      handler(ctx) {
+        return `Welcome, ${ctx.params.name}`;
+      }
+    },
+    delete: {
+      params: {
+        id: "string"
+      },
+      handler(ctx) {
 
-		run: {
-			params: {
-				uuid: "string"
-			},
-			handler(ctx) {
-				return "reuslt";
-			}
-		}
-	},
-	events: {
+      }
+    }
+  },
+  events: {
 
-	},
-	methods: {
+  },
+  methods: {
 
-	},
-	created() {
+  },
+  created() {
 
-	},
-	started() {
+  },
+  started() {
 
-	},
-	stopped() {
+  },
+  stopped() {
 
-	}
+  }
 };
 
 module.exports = service;
