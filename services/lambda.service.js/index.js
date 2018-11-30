@@ -1,16 +1,12 @@
 "use strict";
 
-module.exports = {
+const service = {
 	name: "lambda",
 	settings: {
 
 	},
 	dependencies: [],	
 	actions: {
-		hello() {
-			return "I'm alive!";
-		},
-
 		/**
 		 * Welcome a username
 		 *
@@ -50,3 +46,5 @@ module.exports = {
 
 	}
 };
+
+module.exports = service;

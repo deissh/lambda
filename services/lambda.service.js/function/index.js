@@ -1,5 +1,3 @@
-const path = require("path");
-
 const hash = (Math.random().toString(16).slice(2) + Math.random().toString(16).slice(2) + Math.random().toString(16).slice(2)).substr(0, 32);
 
 class Context {
