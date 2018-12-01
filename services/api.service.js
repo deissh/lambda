@@ -15,7 +15,11 @@ module.exports = {
       whitelist: [
         // allow only lambda/** requests
         "**"
-      ]
+      ],
+      aliases: {
+        "lambda": "lambda.create",
+        "DELETE lambda/:id": "lambda.delete"
+      }
     }],
 
     // Serve assets from "public" folder

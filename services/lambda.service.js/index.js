@@ -10,17 +10,24 @@ const service = {
     // "lambda-drive"
   ],
   actions: {
+    hello(ctx) {
+      return {
+        data: "I'm alive!",
+        status: 200
+      };
+    },
+
     /**
      * Welcome a username
      *
      * @param {String} name - User name
      */
-    welcome: {
+    create: {
       params: {
-        name: "string"
+
       },
       handler(ctx) {
-        return `Welcome, ${ctx.params.name}`;
+        
       }
     },
     delete: {

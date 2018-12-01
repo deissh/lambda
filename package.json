@@ -21,10 +21,8 @@
     "moleculer-repl": "^0.5.0"
   },
   "dependencies": {
-    "@slynova/flydrive": "^0.3.1",
     "moleculer": "^0.13.0",
     "moleculer-db": "^0.7.6",
-    "moleculer-flydrive": "^0.1.1",
     "moleculer-web": "^0.8.0",
     "nats": "^1.0.0"
   },
