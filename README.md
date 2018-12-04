@@ -2,6 +2,8 @@
 
 ![img](https://blog.alexellis.io/content/images/2017/08/clip-1.png)
 
+[RU](https://github.com/deissh/lambda/blob/master/README_RU.md)
+
 Lambda is a framework for building Serverless functions with Docker which has first-class support for metrics. Any process can be packaged as a function enabling you to consume a range of web events without repetitive boiler-plate coding.
 
 ## Get starting
