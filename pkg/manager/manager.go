@@ -2,29 +2,20 @@ package manager
 
 import (
 	"github.com/docker/docker/client"
-	"golang.org/x/net/context"
 	"log"
 )
 
-type managerCore struct {
-	context context.Context
+type Core struct {
 	client *client.Client
 }
 
-func Create() (managerCore, error) {
-	m := managerCore{}
-	err := m.newClient()
-
-	return m, err
-}
-
-func (m managerCore) newClient () error {
-	var err error
-	m.client, err = client.NewEnvClient()
-
+func Create() (Core, error) {
+	cli, err := client.NewEnvClient()
 	if err != nil {
-		log.Fatal(err)
+		log.Panic(err)
 	}
 
-	return err
+	return Core{
+		client: cli,
+	}, nil
 }
