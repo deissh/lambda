@@ -10,7 +10,7 @@ func main() {
 
 	m, _ := manager.Create()
 
-	active, err := m.GetAll()
+	active, err := m.GetActive()
 	if err != nil {
 		log.Panic(err)
 	}
