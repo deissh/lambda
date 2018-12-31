@@ -17,6 +17,6 @@ func createHandler(c *gin.Context) {
 	}
 
 	c.JSON(200, gin.H{
-		message: "ok",
+		"message": "ok",
 	})
 }
