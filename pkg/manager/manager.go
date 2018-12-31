@@ -11,12 +11,14 @@ type managerCore struct {
 	client *client.Client
 }
 
-func Create() managerCore {
+func Create() (managerCore, error) {
 	m := managerCore{}
-	return m
+	err := m.newClient()
+
+	return m, err
 }
 
-func (m managerCore) NewClient () error {
+func (m managerCore) newClient () error {
 	var err error
 	m.client, err = client.NewEnvClient()
 
