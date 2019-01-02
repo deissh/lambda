@@ -9,3 +9,64 @@
 ![img](https://blog.alexellis.io/content/images/2017/08/clip-1.png)
 
 Lambda is a framework for building Serverless functions with Docker which has first-class support for metrics. Any process can be packaged as a function enabling you to consume a range of web events without repetitive boiler-plate coding.
+
+## API
+
+Your function available on custom port. For example `2233` is function port.
+
+### Simple ping function
+
+```bash
+curl -X GET \
+  http://localhost:2233/_/ping
+```
+
+### Triger function
+
+```bash
+curl -X GET \
+  http://localhost:2233
+```
+
+### Create new function
+
+```bash
+curl -X POST \
+  http://localhost:3000/v1/create \
+  -H 'Content-Type: application/json' \
+  -d '{
+	"name": "example",
+	"uuid": "dasdxqxeqsd132eqw",
+	"runtime": {
+		"executor": "/bin/cat",
+		"cmd": ""
+	},
+	"repository": {
+		"image": "deissh/lambda-runner:latest"
+	},
+	"service": {
+		"port": "2233",
+		"host": "0.0.0.0"
+	}
+}'
+```
+
+### Inspect function
+
+`/v1/stats/:uuid`
+
+```bash
+curl -X GET \
+  http://localhost:3000/v1/dasdxqxeqsd132eqw
+```
+
+### Delete function
+
+`/v1/:uuid`
+
+You need change uuid befour use.
+
+```bash
+curl -X DELETE \
+  http://localhost:3000/v1/dasdxqxeqsd132eqw
+```
