@@ -9,7 +9,7 @@ type Core struct {
 	client *client.Client
 }
 
-func Create() (Core, error) {
+func Create() Core {
 	cli, err := client.NewEnvClient()
 	if err != nil {
 		log.Panic(err)
@@ -17,5 +17,5 @@ func Create() (Core, error) {
 
 	return Core{
 		client: cli,
-	}, nil
+	}
 }

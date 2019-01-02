@@ -8,14 +8,14 @@ import (
 func main() {
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
-	m, _ := manager.Create()
+	m := manager.Create()
 
 	active, err := m.GetActive()
 	if err != nil {
 		log.Panic(err)
 	}
 
-	for _, container := range active{
+	for _, container := range active {
 		log.Println(container.ID)
 	}
 }

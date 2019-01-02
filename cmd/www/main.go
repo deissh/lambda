@@ -13,5 +13,5 @@ func main() {
 
 	log.Println("starting server")
 
-	log.Fatal(server.Run("0.0.0.0", "8080"))
+	log.Fatal(server.Run("0.0.0.0", "3000"))
 }

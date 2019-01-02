@@ -1,14 +1,16 @@
 package server
 
 import (
+	"github.com/deissh/lambda/pkg/manager"
 	"github.com/gin-gonic/gin"
 	"log"
 )
 
 type core struct {
-	ip string
-	port string
-	router *gin.Engine
+	ip      string
+	port    string
+	router  *gin.Engine
+	manager manager.Core
 }
 
 func Run(host string, port string) error {
@@ -20,6 +22,7 @@ func Run(host string, port string) error {
 }
 
 func (s core) Start() error {
+	s.manager = manager.Create()
 	s.router = gin.Default()
 
 	log.Println("starting server")
@@ -32,10 +35,11 @@ func (s core) Start() error {
 }
 
 func (s core) Routing() {
+
 	g := s.router.Group("/v1")
 	{
 		g.GET("/")
-		g.POST("/create", createHandler)
-		g.Any("/function/:uuid")
+		g.POST("/create", createHandler(s.manager))
+		g.GET("/function/:uuid")
 	}
 }
