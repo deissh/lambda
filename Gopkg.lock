@@ -175,7 +175,9 @@
   analyzer-version = 1
   input-imports = [
     "github.com/docker/docker/api/types",
+    "github.com/docker/docker/api/types/container",
     "github.com/docker/docker/client",
+    "github.com/docker/go-connections/nat",
     "github.com/gin-gonic/gin",
     "golang.org/x/net/context",
   ]

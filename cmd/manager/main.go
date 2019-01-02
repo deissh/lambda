@@ -10,12 +10,13 @@ func main() {
 
 	m := manager.Create()
 
-	active, err := m.GetActive()
+	all, err := m.GetActive()
 	if err != nil {
-		log.Panic(err)
+		log.Fatal(err)
 	}
 
-	for _, container := range active {
-		log.Println(container.ID)
+	for _, container := range all {
+		_ = m.Stop(container.ID)
+		log.Println(container.ID, " | ", container.State)
 	}
 }

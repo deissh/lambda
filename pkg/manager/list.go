@@ -18,8 +18,8 @@ func (m *Core) GetActive() ([]types.Container, error) {
 	}
 
 	var res []types.Container
-	for _, container := range containers{
-		if _, ok := container.Labels["LAMBDA_UUID"]; ok {
+	for _, container := range containers {
+		if v, ok := container.Labels["lambda.active"]; ok && v == "true" {
 			res = append(res, container)
 		}
 	}
