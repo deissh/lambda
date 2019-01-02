@@ -25,11 +25,15 @@ func (c *Core) Create(info typings.FunctionInfo) error {
 		context.Background(),
 		&container.Config{
 			Image: info.Repository.ImageName,
+			ExposedPorts: map[nat.Port]struct{}{
+				"8080": {},
+			},
+			Labels: map[string]string{},
 		},
 		&container.HostConfig{
 			AutoRemove: true,
 			PortBindings: map[nat.Port][]nat.PortBinding{
-				"8080/tcp": {
+				"8080": {
 					{
 						HostIP:   "",
 						HostPort: info.Service.Port,
