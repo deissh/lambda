@@ -40,6 +40,7 @@ func (s core) Routing() {
 	{
 		g.GET("/")
 		g.POST("/create", createHandler(s.manager))
-		g.GET("/function/:uuid")
+		g.DELETE("/:uuid", deleteHandler(s.manager))
+		g.GET("/inspect/:uuid", inspectHandler(s.manager))
 	}
 }
