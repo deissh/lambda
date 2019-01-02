@@ -28,7 +28,14 @@ func (c *Core) Create(info typings.FunctionInfo) error {
 			ExposedPorts: map[nat.Port]struct{}{
 				"8080": {},
 			},
-			Labels: map[string]string{},
+			Labels: map[string]string{
+				"lambda.active": "true",
+				"lambda.uuid":   info.Uuid,
+				"lambda.port":   "8080",
+			},
+			Env: []string{
+				"fproccess=" + info.Runtime.Executor + " " + info.Runtime.Cmd,
+			},
 		},
 		&container.HostConfig{
 			AutoRemove: true,
