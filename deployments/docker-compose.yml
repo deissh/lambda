@@ -1,3 +1,20 @@
-version: 3
+version: '3'
+
+networks:
+  overlay:
+    external: true
 
 services:
+  lambda-api:
+    image: deissh/lambda
+    build:
+      context: ../
+      dockerfile: ./cmd/www/Dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      GIN_MODE: release
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - overlay

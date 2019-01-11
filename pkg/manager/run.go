@@ -4,6 +4,7 @@ import (
 	"github.com/deissh/lambda/pkg/typings"
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
+	"github.com/docker/docker/api/types/network"
 	"github.com/docker/go-connections/nat"
 	"golang.org/x/net/context"
 )
@@ -38,16 +39,20 @@ func (c *Core) Create(info typings.FunctionInfo) (string, error) {
 		},
 		&container.HostConfig{
 			AutoRemove: true,
-			PortBindings: map[nat.Port][]nat.PortBinding{
-				"8080": {
-					{
-						HostIP:   "",
-						HostPort: info.Service.Port,
-					},
-				},
+			//PortBindings: map[nat.Port][]nat.PortBinding{
+			//	"8080": {
+			//		{
+			//			HostIP:   "",
+			//			HostPort: info.Service.Port,
+			//		},
+			//	},
+			//},
+		},
+		&network.NetworkingConfig{
+			EndpointsConfig: map[string]*network.EndpointSettings{
+				"overlay": {},
 			},
 		},
-		nil,
 		info.Uuid)
 	if err != nil {
 		return "", err
