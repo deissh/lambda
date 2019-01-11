@@ -8,7 +8,7 @@ import (
 	"golang.org/x/net/context"
 )
 
-func (c *Core) Create(info typings.FunctionInfo) error {
+func (c *Core) Create(info typings.FunctionInfo) (string, error) {
 	// получаем контейнер
 	//_, err := c.client.ImagePull(
 	//	context.Background(),
@@ -30,7 +30,6 @@ func (c *Core) Create(info typings.FunctionInfo) error {
 			},
 			Labels: map[string]string{
 				"lambda.active": "true",
-				"lambda.uuid":   info.Uuid,
 				"lambda.port":   "8080",
 			},
 			Env: []string{
@@ -51,7 +50,7 @@ func (c *Core) Create(info typings.FunctionInfo) error {
 		nil,
 		info.Uuid)
 	if err != nil {
-		return err
+		return "", err
 	}
 
 	// запускаем контейнер
@@ -63,5 +62,5 @@ func (c *Core) Create(info typings.FunctionInfo) error {
 		panic(err)
 	}
 
-	return nil
+	return resp.ID, nil
 }

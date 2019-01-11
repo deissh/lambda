@@ -2,7 +2,7 @@ package typings
 
 type FunctionInfo struct {
 	Name    string `json:"name" binding:"required"`
-	Uuid    string `json:"uuid" binding:"required"`
+	Uuid    string `json:"uuid"`
 	Runtime struct {
 		Executor string `json:"executor" binding:"required"`
 		Cmd      string `json:"cmd"`

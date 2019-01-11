@@ -21,7 +21,8 @@ func createHandler(m manager.Core) gin.HandlerFunc {
 			return
 		}
 
-		if err := m.Create(body); err != nil {
+		uuid, err := m.Create(body)
+		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{
 				"error": err.Error(),
 			})
@@ -30,7 +31,7 @@ func createHandler(m manager.Core) gin.HandlerFunc {
 		}
 
 		c.JSON(200, gin.H{
-			"message": "ok",
+			"uuid": uuid,
 		})
 	}
 }
