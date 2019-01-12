@@ -31,7 +31,7 @@ func (c *Core) Create(info typings.FunctionInfo) (string, error) {
 			},
 			Labels: map[string]string{
 				"lambda.active": "true",
-				"lambda.port":   "8080",
+				"lambda.port":   info.Service.Port,
 			},
 			Env: []string{
 				"fproccess=" + info.Runtime.Executor + " " + info.Runtime.Cmd,

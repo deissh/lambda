@@ -3,7 +3,6 @@ package server
 import (
 	"github.com/deissh/lambda/pkg/manager"
 	"github.com/gin-gonic/gin"
-	"log"
 )
 
 type core struct {
@@ -25,8 +24,6 @@ func (s core) Start() error {
 	s.manager = manager.Create()
 	s.router = gin.Default()
 
-	log.Println("starting server")
-
 	// create routing
 	s.Routing()
 	s.router.Use(gin.Recovery())
@@ -40,7 +37,7 @@ func (s core) Routing() {
 	{
 		g.GET("/")
 		g.POST("/create", createHandler(s.manager))
-		g.Any("/function/:uuid", triggerHandler())
+		g.Any("/function/:uuid", triggerHandler)
 		g.GET("/delete/:uuid", deleteHandler(s.manager))
 		g.GET("/inspect/:uuid", inspectHandler(s.manager))
 	}

@@ -17,6 +17,5 @@ type FunctionInfo struct {
 	} `json:"repository" binding:"required"`
 	Service struct {
 		Port string `json:"port" binding:"required"`
-		Host string `json:"host" binding:"required"`
 	} `json:"service" binding:"required"`
 }
