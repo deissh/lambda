@@ -12,20 +12,15 @@ Lambda is a framework for building Serverless functions with Docker which has fi
 
 ## API
 
-Your function available on custom port. For example `2233` is function port.
-
-### Simple ping function
-
-```bash
-curl -X GET \
-  http://localhost:2233/_/ping
-```
+Your function available on custom port. For example `8080` is function port.
 
 ### Triger function
 
+Allow all http methods
+
 ```bash
 curl -X GET \
-  http://localhost:2233
+  http://localhost:3000/v1/function/{uuid}
 ```
 
 ### Create new function
@@ -36,7 +31,6 @@ curl -X POST \
   -H 'Content-Type: application/json' \
   -d '{
 	"name": "example",
-	"uuid": "dasdxqxeqsd132eqw",
 	"runtime": {
 		"executor": "/bin/cat",
 		"cmd": ""
@@ -45,28 +39,35 @@ curl -X POST \
 		"image": "deissh/lambda-runner:latest"
 	},
 	"service": {
-		"port": "2233",
-		"host": "0.0.0.0"
+		"port": "8080"
 	}
 }'
 ```
 
+Result
+
+```json
+{
+    "uuid": "c80d737d0040dff9c9b0341908273dfd71f66f4e5eb8302a0b9d8b26e9b87089"
+}
+```
+
 ### Inspect function
 
-`/v1/stats/:uuid`
+`/v1/inspect/:uuid`
 
 ```bash
 curl -X GET \
-  http://localhost:3000/v1/dasdxqxeqsd132eqw
+  http://localhost:3000/v1/inspect/{uuid}
 ```
 
 ### Delete function
 
-`/v1/:uuid`
+`/v1/delete/:uuid`
 
 You need change uuid befour use.
 
 ```bash
-curl -X DELETE \
-  http://localhost:3000/v1/dasdxqxeqsd132eqw
+curl -X GET \
+  http://localhost:3000/v1/delete/{uuid}
 ```
