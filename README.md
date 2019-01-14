@@ -10,6 +10,12 @@
 
 Lambda is a framework for building Serverless functions with Docker which has first-class support for metrics. Any process can be packaged as a function enabling you to consume a range of web events without repetitive boiler-plate coding.
 
+## Deploy
+
+1. Install Docker with Docker Compose
+2. Create external docker network `docker network create proxy`
+3. Build and deploy project `cd ./deployments && docker-compose up --build`
+
 ## API
 
 Your function available on custom port. For example `8080` is function port.
